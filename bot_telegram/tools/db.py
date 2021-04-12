@@ -4,7 +4,7 @@ import sqlite3
 class dbManage():
 	def __init__(self,dbName):
 		self.dbName = str(dbName)
-		self.dbItems = "(user,timealert,lng,lat)"
+		self.dbItems = "(user,timealert,lat,lng)"
 	def connect(self,tableName,user):
 		self.tableName = str(tableName)
 		self.user = user
@@ -13,8 +13,8 @@ class dbManage():
 		return self.cursor
 	def createUser(self):
 		data = (self.user,120,"","")
-		self.dbcomand = str("INSERT INTO {0} {1}  VALUES {2} ;".format(self.tableName,tuple(self.dbItems),tuple(data))
-		self.cursor.execute(self.tableUserFeels)
+		dbcomand = str("INSERT INTO {0} {1}  VALUES {2};".format(self.tableName,self.dbItems,data))
+		self.cursor.execute(dbcomand)
 		self.cursor.connection.commit()
 	def getTimer(self):
 		dbcomand = " SELECT timealert FROM {0} WHERE user = {0};".format(self.tableName,self.user)
@@ -27,10 +27,10 @@ class dbManage():
 		self.cursor.connection.commit()
 	def addLocation(self,loc):
 		"""loc as list [lat, long] """
-		dbcomand = " UPDATE {0} SET lat={1} lng={2} WHERE user = {3};".format(self.tableName,loc[0],loc[1],self.user)
+		dbcomand = " UPDATE {0} SET lat={1},lng={2} WHERE user = {3};".format(self.tableName,loc[0],loc[1],self.user)
 		self.cursor.execute(dbcomand)
 		self.cursor.connection.commit()
 	def disdableLocation(self):
-		dbcomand = " UPDATE {0} SET lat={1} lng={2} WHERE user = {3};".format(self.tableName,"","",self.user)
+		dbcomand = " UPDATE {0} SET lat={1},lng={2} WHERE user = {3};".format(self.tableName,"0","0",self.user)
 		self.cursor.execute(dbcomand)
 		self.cursor.connection.commit()
