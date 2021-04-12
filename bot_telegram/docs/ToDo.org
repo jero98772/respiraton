@@ -1,0 +1,10 @@
+* mensajes 
+** iniciativas
+*** generarlas
+*** buscar la mejor forma de comunicarlas
+** alertas
+*** generarlas 
+*** buscar la mejor forma de comunicarlas
+** configuracion
+*** tiempo de alertas/iniciativas personalisables
+*** localisacion para recivir datos del sensor mas cercano
