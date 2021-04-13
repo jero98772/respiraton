@@ -5,6 +5,6 @@
 ** alertas
 *** generarlas 
 *** buscar la mejor forma de comunicarlas
-** configuración
-*** tiempo de alertas/iniciativas personalisables
-*** localización para recibir datos del sensor mas cercano
+** DONE configuración
+*** DONE tiempo de alertas/iniciativas personalisables
+*** DONE localización para recibir datos del sensor mas cercano
