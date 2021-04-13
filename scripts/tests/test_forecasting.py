@@ -1,15 +1,5 @@
-#asin(x)+bcos(x)+c
-"""
-alpha = a/(a**2+b**2)**(1/2)
-beta = b/(a**2+b**2)**(1/2)
- =
-nota experiementos
-{0,2}, {1,0.5}, {2,0}, {3,1}, {4,1.5}, {5,2}, {6,1.5}, {7,2}, {8,0.5}, {9,0}, {10,0.5}, {11,2}, {12,1}, {13,1.6666666666666667}, {14,1}
--0.52313*sin(x)+0.576513*cos(x)+1.13258
-"""
 from influxdb import InfluxDBClient
 import json
-import numpy as np
 class aqa:
 	host = "aqa.unloquer.org"
 	client = InfluxDBClient(host=host, port=8086)
