@@ -1,35 +1,20 @@
 from influxdb import InfluxDBClient
-import json
-class aqa:
-	host = "aqa.unloquer.org"
-	client = InfluxDBClient(host=host, port=8086)
-	def __init__(self,db):
+class sensors:
+	def __init__(self,db,host,port=8086):
+		#self.port = port
+		#self.host = host 
+		self.client = InfluxDBClient(host=host, port=port)
 		self.db = db
-	def namesAQA(self):
+	def names(self):
 		names = self.client.query('SHOW MEASUREMENTS ON "'+self.db+'"').raw
 		clearNames = eval(str(names)[88:-4])
-		return names
-	def data(self,name,dataAQA = "pm25"):
-		q = self.client.query('SELECT mean("'+dataAQA+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE time > now() - 5h GROUP BY time(10s) FILL(none)')
+		return clearNames
+	def data(self,name,data = "pm25"):
+		#q = self.client.query('SELECT mean("'+data+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE (time > now() - 5h GROUP BY time(10s) FILL(none))')
+		q = self.client.query('select * from "'+name+'" WHERE time >= now() - 12h')
+		#q = self.client.query('SELECT mean("'+data+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE time > now() - 5h GROUP BY time(10s) FILL(none)')
+		print(q)
 		values = []
 		for value in q.get_points():
-				values.append(value[dataAQA])
+				values.append(value[data])
 		return values
-class canairio:
-	def __init__(self,sensor):
-		self.sensor = sensor 
-	def getData(self):
-		from subprocess import run
-		run("curl -G 'http://influxdb.canair.io:8086/query?db=canairio' --data-urlencode 'q=select * from '"+self.sensor+"' WHERE time >= now() - 12h' > "+self.sensor+".json",shell = True)
-	#get and read caniario data with solutions about  influx
-	def json2datafarame(self,data):
-		with open(self.sensor+".json",) as sensordata:
-			data = json.load(sensordata)
-			values = data["results"]
-			#print(types(values))
-			cols = values[0][values.index("series")]
-			#print(type(cols))
-			#[0]["columns"]
-			#print(cols)
-			#for i in data["values"]:
-    		#print(i)

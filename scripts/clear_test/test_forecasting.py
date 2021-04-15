@@ -19,60 +19,39 @@ class sensors:
 		return clearNames
 	def data(self,name,data = "pm25"):
 		q = self.client.query('SELECT mean("'+data+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE time > now() - 24h GROUP BY time(10s) FILL(none)')
-		#q = self.client.query('select * from "PM25_Berlin_CanAirIO_v2" WHERE time >= now() - 12h')
-		#q = self.client.query('SELECT mean("'+data+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE time > now() - 5h GROUP BY time(10s) FILL(none)')
-		#q = self.client.query('SELECT mean("'+dataAQA+'") AS "data" FROM "'+self.db+'"."autogen".'+name+' WHERE time > now() - 5h GROUP BY time(10s) FILL(none)')
 		values = []
 		for value in q.get_points():
 			values.append(value["data"])
 		return values
-def main():
+def getPm25(file):
 	import pandas as pd
+	mesures = pd.read_csv(file, sep=";")
+	print(mesures)
+	pm25s = mesures['Material Particulado PM 2.5'].values
+	print(type(pm25s))
+	return pm25s
+	#pm25s = np.asanyarray(pm25s)
+	#epochs = epochs.reshape((1,-1))
+	#pm25s = pm25s.reshape((1,-1))
+def main():
+	#with canairio use ; and i need , ... is hard level
 	from statsmodels.tsa.statespace.sarimax import SARIMAX
 	import matplotlib.pyplot as plt
 	HOST = "aqa.unloquer.org"
 	db = sensors("aqa",HOST)
-	pm25 = db.data("jero98772")
+	#name = "aqa_montesori_nivel_calle"
+	name = "jero98772"
+	pm25 = db.data(name)
+	#file = "data/virrey2.csv"
+	#pm25 = getPm25(file)
 	timeser = list(range(len(pm25)))
 	timeser2 = timex2(timeser)
-	#data = {'time': timeser, 'pm25':pm25}
-	#df = pd.DataFrame(data=data)
 	s_mod = SARIMAX(pm25, 
                 order=(0,0,0), 
                 seasonal_order=(1,1,1,24))
-	#(p,d,q)(P,D,Q)m 
-	"""
-	https://puneet166.medium.com/time-series-forecasting-how-to-predict-future-data-using-arma-arima-and-sarima-model-8bd20597cc7b
-	p = 2 
-	m tiempo de un perido , dias de la semana = 7
-	"""
-	#results=s_mod.fit()
-	#results.summary()
 	predictions = list(s_mod.fit().predict())
 	plt.plot(timeser,pm25,"bo")
-	#plt.plot(timeser,predictions,"g-")
 	plt.plot(timeser2,pm25+predictions,"r-")
 	plt.show()
-	#print(timeser*2)
-	#print(pm25+predictions)
 	print(len(timeser*2),len(pm25+predictions),len(timeser*2),len(pm25),len(predictions))
-"""
-	print(type(pm25),type(predictions))
-	print(pm25+predictions)
-	print(Y)
-	filtred = np.polyfit(pm25, predictions, 1)
-	Y = np.polyval(predictions, timeser)
-for x in timeser:
-    for y2 in y:
-
-predictions = np.polyval(filtred, timeser)
-
-
-"""
-
-def test():
-	sensorTest = "PM25_Berlin_CanAirIO_v2"
-	canairioclass = canairio(sensorTest)
-	canairioclass.getData()
-	canairioclass.json2datafarame(sensorTest)
 main()
