@@ -35,16 +35,16 @@ class webpage():
 				name = ii[0]
 				path = "img/"+ii[0]
 				try:
-					print("check error")
-					pm25 = db.data(name);pm25[0]
-					print("no error for "+name)
+					#print("check error")
+					#pm25 = db.data(name);pm25[0]
+					#print("no error for "+name)
 					#print("ERROR",pm25)
-					predict = pred(pm25)
-					predict.predData()
-					print("pred")
+					#predict = pred(pm25)
+					#predict.predData()
+					#print("pred")
 					#predict.saveImg("static/img/"+name,SALT)
-					predict.saveImg("static/img/"+name+SALT)
-					print("save img")
+					#predict.saveImg("static/img/"+name+SALT)
+					#print("save img")
 					sensorsON.append(name)
 					#print("ok for"+name)
 				except:

@@ -11,7 +11,7 @@ setup(
 	description='',
 	url='',
 	packages=find_packages(),
-    install_requires=['python-telegram-bot'],
+    install_requires=['Flask', 'influxdb', 'matplotlib','statsmodels'],
     include_package_data=True,
 	)
 print("recuerde añadir el token en bot_telegram/files/token.txt")
