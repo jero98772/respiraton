@@ -36,22 +36,25 @@ def getPm25(file):
 def main():
 	#with canairio use ; and i need , ... is hard level
 	from statsmodels.tsa.statespace.sarimax import SARIMAX
+	from statsmodels.tsa.arima_model import ARIMA
 	import matplotlib.pyplot as plt
+	from sklearn.metrics import mean_squared_error
 	HOST = "aqa.unloquer.org"
 	db = sensors("aqa",HOST)
 	#name = "aqa_montesori_nivel_calle"
 	name = "jero98772"
 	pm25 = db.data(name)
-	#file = "data/virrey2.csv"
+	#file = "test.csv"
 	#pm25 = getPm25(file)
 	timeser = list(range(len(pm25)))
 	timeser2 = timex2(timeser)
-	s_mod = SARIMAX(pm25, 
-                order=(0,0,0), 
-                seasonal_order=(1,1,1,24))
-	predictions = list(s_mod.fit().predict())
+	#model = ARIMA(endog = pm25, exog = timeser,order=(1, 2, 1))
+	model = SARIMAX(endog = pm25,exog = timeser , order=(1,2,1), seasonal_order=(1,1,1,24))	
+	predictions = list(model.fit().predict())
+	rmse = (mean_squared_error(timeser2, predictions))**(1/2)
+	print("rsm",len(rmse))
 	plt.plot(timeser,pm25,"bo")
-	plt.plot(timeser2,pm25+predictions,"r-")
+	plt.plot(timeser2,rmse,"r-")
 	plt.show()
-	print(len(timeser*2),len(pm25+predictions),len(timeser*2),len(pm25),len(predictions))
+	#print(len(timeser*2),len(pm25+predictions),len(timeser*2),len(pm25),len(predictions))
 main()

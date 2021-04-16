@@ -1,1 +1,6 @@
 bot_telegram/files/token.txt
+scripts/clear_test/pics/*
+scripts/test/test.csv
+consultor_web/static/img/*
+consultor_web/tools/__pycache__/*
+scripts/tests/test.csv

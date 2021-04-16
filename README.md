@@ -8,3 +8,12 @@ esta hackaton/respiraton : http://www.y4pt.org/respiraton/
 **bot telegram**
 
 	python setup.py install
+
+# usar consultor web
+
+despues de descargar las dependencias
+corra :
+
+	python main.py
+
+dirijase a su localhost:9600 [este localhost](http://0.0.0.0:9600/prediction.html)

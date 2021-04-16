@@ -17,7 +17,16 @@ def helpbot(update: Update, _: CallbackContext) -> None:
 		-\t /desactivarUbi  \t desactivar ubicacion
     	''')
 def start(update: Update, _: CallbackContext) -> None:
-	update.message.reply_text('Hola! Bienvenid@ \nsi nesesitas ayuda usa el comando /help.\nTe estare enviadno alertas y propuestas relacionadas a la calidad de aire.\nme gustaria que activaras tu ubicacion /activarUbi para darte mejor informacion')
+	msg1 = '''
+	Hola! Bienvenid@ a Aire alParque. 
+	te ayudaremos a planear tu dia con el mejor momento de menos comtaminacion  
+	hecho por Alianza Piranga
+	'''
+	msg2 = '''
+	si nesesitas ayuda usa el comando /help.\nTe estare enviadno alertas y propuestas relacionadas a la calidad de aire.\nme gustaria que activaras tu ubicacion /activarUbi para darte mejor informacion'
+	'''
+	update.message.reply_text(msg1)
+	update.message.reply_text(msg2)
 	db.connect(DBTABLE,update.message.chat_id)
 	db.createUser()
 	while True:
@@ -50,3 +59,10 @@ updater.dispatcher.add_handler(CommandHandler('activarUbi', locationOn,pass_args
 updater.dispatcher.add_handler(CommandHandler('desactivarUbi', locationOff))
 updater.start_polling()
 updater.idle()
+"""
+color pm25,  tiempo de expocion (general, personas con riesgo )
+verde todo , todo
+amarilo todo , 
+naranja
+rojo
+"""

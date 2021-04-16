@@ -37,9 +37,7 @@ def main():
 	timeser2 = timex2(timeser)
 	#data = {'time': timeser, 'pm25':pm25}
 	#df = pd.DataFrame(data=data)
-	s_mod = SARIMAX(pm25, 
-                order=(0,0,0), 
-                seasonal_order=(1,1,1,24))
+	s_mod = SARIMAX(pm25, order=(1,2,1), seasonal_order=(1,1,1,24))
 	#(p,d,q)(P,D,Q)m 
 	"""
 	https://puneet166.medium.com/time-series-forecasting-how-to-predict-future-data-using-arma-arima-and-sarima-model-8bd20597cc7b
