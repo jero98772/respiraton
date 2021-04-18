@@ -14,5 +14,3 @@ setup(
     install_requires=['Flask', 'influxdb', 'matplotlib','statsmodels'],
     include_package_data=True,
 	)
-print("recuerde añadir el token en bot_telegram/files/token.txt")
-writetxt("bot_telegram/files/token.txt","telegram token aqui")

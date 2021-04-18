@@ -15,7 +15,7 @@ esta hackaton/respiraton : http://www.y4pt.org/respiraton/
 **bot telegram**
 
 	python bot_telegram/setup.py install
-**consultor web **
+**consultor web**
 	
 	python consultor_web/setup.py install
 
@@ -29,8 +29,11 @@ esta hackaton/respiraton : http://www.y4pt.org/respiraton/
 ### pagina
 ![pagina](https://wiki.unloquer.org/_media/personas/jero98772/git-mal-minuto/2021-04-17-212413_1309x595_scrot.png)
 ### pronostico
-![pronostioc](https://wiki.unloquer.org/_media/personas/jero98772/git-mal-minuto/aaaaa.png)
-# apoyados en
-- la respiraton  
-- datos de canairio
+![pronostico](https://wiki.unloquer.org/_media/personas/jero98772/git-mal-minuto/aaaaa.png)
+# apoyados y agradecidos en
+- la respiraton 
+- datos de canairio y unloquer
+- sensores canairio y AQA
+- la comunidad trabajando por la buena calidad de aire y sus logros
 
+se busco hacer el proyecto de una forma para apoyarnos y apoyar   
