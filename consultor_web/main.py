@@ -35,32 +35,42 @@ class webpage():
 				name = ii[0]
 				path = "img/"+ii[0]
 				try:
-					#print("check error")
-					#pm25 = db.data(name);pm25[0]
-					#print("no error for "+name)
-					#print("ERROR",pm25)
-					#predict = pred(pm25)
-					#predict.predData()
-					#print("pred")
-					#predict.saveImg("static/img/"+name,SALT)
-					#predict.saveImg("static/img/"+name+SALT)
-					#print("save img")
+					print("check error")
+					pm25 = db.data(name);pm25[0]
+					print("no error for "+name)
+					predict = pred(pm25)
+					predict.predDataSarimax()
+					print("pred")
+					predict.saveImg("static/img/"+name+SALT)
+					print("save img")
 					sensorsON.append(name)
-					#print("ok for"+name)
+					print("ok for"+name)
 				except:
 						pass
-		"""
-		db = sensors("aqa",HOST)
-		name = "jero98772"
-		pm25 = db.data(name);pm25[0]
-		print("ERROR",pm25)
-		#predict = pred(pm25)
-		#predict.predData()
-		#predict.saveImg("static/img/"+name+SALT)
-		print("saved/img")
-		sensorsON.append(name)
-		print("ok for"+str(sensorsON))
-		"""
+				"""		
+				print("check error")
+				pm25 = db.data(name)#;pm25[0]
+				print("no error for "+name)
+				predict = pred(pm25)
+				predict.predDataSarimax()
+				print("pred")
+				predict.saveImg("static/img/"+name+SALT)
+				print("save img")
+				sensorsON.append(name)
+				print("ok for"+name)
+				"""
+				"""
+				db = sensors("aqa",HOST)
+				name = "jero98772"
+				pm25 = db.data(name);pm25[0]
+				print("ERROR",pm25)
+				#predict = pred(pm25)
+				#predict.predData()
+				#predict.saveImg("static/img/"+name+SALT)
+				print("saved/img")
+				sensorsON.append(name)
+				print("ok for"+str(sensorsON))
+				"""
 		#print(type(sensorsON))
 		#data
 		#print(type(sNames))

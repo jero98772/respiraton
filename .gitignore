@@ -4,3 +4,9 @@ scripts/test/test.csv
 consultor_web/static/img/*
 consultor_web/tools/__pycache__/*
 scripts/tests/test.csv
+files/user_configs
+bot_telegram/tools/__pycache__/*
+bot_telegram/tools/__pycache__/
+bot_telegram/tools/__pycache__/tools.cpython-39.pyc
+bot_telegram/tools/__pycache__/db.cpython-39.pyc
+

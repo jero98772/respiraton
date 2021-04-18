@@ -34,3 +34,14 @@ class dbManage():
 		dbcomand = " UPDATE {0} SET lat={1},lng={2} WHERE user = {3};".format(self.tableName,"0","0",self.user)
 		self.cursor.execute(dbcomand)
 		self.cursor.connection.commit()
+	def addSensor(self,name):
+		dbcomand = " UPDATE {0} SET sensorP={1} WHERE user = {2};".format(self.tableName,name,self.user)
+		self.cursor.execute(dbcomand)
+		self.cursor.connection.commit()
+	def getSensorName(self):
+		dbcomand = " SELECT sensorP FROM {0} WHERE user = {1};".format(self.tableName,self.user)
+		self.cursor.execute(dbcomand)
+		name = self.cursor.fetchall()
+		return name
+
+	

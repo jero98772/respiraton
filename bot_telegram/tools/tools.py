@@ -14,3 +14,9 @@ def timer(time,timedata):
 def readtxtline(name):
 	with open(name, 'r') as file:
 		return str(file.readline())
+def readtxt(name):
+	content = []
+	with open(name+".txt", 'r') as file:
+		for i in file.readlines():
+			content.append(str(i).replace("\n",""))
+	return content
