@@ -3,8 +3,11 @@ esta hackaton/respiraton : http://www.y4pt.org/respiraton/
 
 # mira mas aqui
 [pagina principal](https://aire-al-parque.web.app/principalParques)
+
 [mapa](https://jpfonsecaza.shinyapps.io/Respiraton/)
+
 [codigo de la pagina ](https://github.com/olartejohn/airealparque)
+
 # descargar
 
 	 git clone https://github.com/jero98772/respiraton.git
