@@ -3,13 +3,13 @@
 from setuptools import setup, find_packages
 from tools.tools import writetxt
 setup(
-	name='',
+	name='Consultor de Aire al parque',
 	version='1.0.0',
-	license='',
+	license='GPLv3',
 	author_email='',
-	author='',
+	author='Alianza piranga',
 	description='',
-	url='',
+	url='localhost:9600',
 	packages=find_packages(),
     install_requires=['Flask', 'influxdb', 'matplotlib','statsmodels'],
     include_package_data=True,

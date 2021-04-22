@@ -3,13 +3,13 @@
 from setuptools import setup, find_packages
 from tools.tools import writetxt
 setup(
-	name='',
+	name='Bot de Aire al parque',
 	version='1.0.0',
-	license='',
+	license='GPLv3',
 	author_email='',
-	author='',
+	author='Alianza piranga',
 	description='',
-	url='',
+	url='https://t.me/respirabot_bot',
 	packages=find_packages(),
     install_requires=['python-telegram-bot'],
     include_package_data=True,
