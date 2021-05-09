@@ -37,3 +37,4 @@ esta hackaton/respiraton : http://www.y4pt.org/respiraton/
 - la comunidad trabajando por la buena calidad de aire y sus logros
 
 se busco hacer el proyecto de una forma para apoyarnos y apoyar   
+cualquier cosa escribenos a alianzapiranga@gmail.com
